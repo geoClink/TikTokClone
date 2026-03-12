@@ -106,16 +106,6 @@ Add or replace assets using the Assets catalog in Xcode.
 
 ---
 
-## Tests
-
-This repository does not include automated unit/UI tests yet. Recommended additions:
-
-- Unit tests for `FeedViewModel` and any services (e.g., data parsing, network response handling).
-- Snapshot tests for important SwiftUI views using a library like `iOSSnapshotTestCase` or `SnapshotTesting`.
-
-To add tests: File > New > Target > Unit Testing Bundle in Xcode, then write tests under the new test target.
-
----
 
 ## Contributing
 
@@ -132,45 +122,6 @@ Guidelines:
 
 ---
 
-## License
 
-This project is unlicensed by default. If you'd like, change this to an OSI-approved license such as MIT.
 
-Suggested MIT header:
 
-```
-MIT License
-
-Copyright (c) YEAR Your Name
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-... (standard MIT text)
-```
-
----
-
-## Troubleshooting & FAQ
-
-Q: The app fails to build with deployment target errors.
-A: Open the project in Xcode. Select the project file in the Project navigator, choose the target, and set "iOS Deployment Target" to an appropriate OS version.
-
-Q: Where are the sample videos used in the feed?
-A: This demo uses placeholder components. Add video files to the asset catalog or include local media files in a bundle and update any playback paths.
-
-Q: How do I add a Swift Package?
-A: File > Add Packages... in Xcode, then search by Git URL or package name.
-
----
-
-If you'd like, I can:
-- Set the README license to MIT and add the full text.
-- Add a quick screenshot to `Assets` and embed it in the README.
-- Create a basic Unit Test target and add one sample test for `FeedViewModel`.
-
-If you want any of those, tell me which and I'll add them.
