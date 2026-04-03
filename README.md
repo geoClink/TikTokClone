@@ -1,127 +1,75 @@
-# TikTokClone (SwiftUI)
+# TikTokClone
 
-A lightweight TikTok-like SwiftUI demo app built as an Xcode project for learning and prototyping. This repository demonstrates a simple social video feed with user profiles, search/explore, notifications, and a tab bar — organized around SwiftUI + MVVM folder structure.
+A SwiftUI practice project that recreates the core layout of a TikTok-style app. This app was built by following a tutorial and currently focuses on UI composition, tab navigation, and vertically paged video playback.
 
----
+Tutorial source: https://www.youtube.com/watch?v=CnZKM9tFg7I
 
-## Table of Contents
+## Overview
 
-- Project Overview
-- Key Features
-- Architecture & Project Structure
-- Getting Started (Requirements & Run)
-- File Map (important files & folders)
-- Assets
-- Tests
-- Contributing
-- License
-- Troubleshooting & FAQ
+The app launches into a tab-based interface with these sections:
 
----
+- Home feed with full-screen vertical video scrolling
+- Explore screen with a simple user list
+- Placeholder upload tab
+- Notifications screen
+- Profile screen with stats and a post grid
 
-## Project Overview
+The feed uses `AVPlayer` and a custom `UIViewControllerRepresentable` wrapper around `AVPlayerViewController` to play remote sample videos.
 
-TikTokClone is a SwiftUI-based demo app that mimics core UI flows found in short-video social apps. It's designed for learning and experimentation with SwiftUI, MVVM, and modular app structure.
+## Features Implemented
 
-Primary entry points:
+- `TabView`-based main navigation
+- Full-screen vertically paged feed
+- Auto-playing video as the visible post changes
+- Custom video player wrapper for SwiftUI
+- Explore, notifications, and profile UI screens
+- Reusable profile stat and grid components
 
-- `App/TikTokCloneApp.swift` — App entry point (SwiftUI App).
-- `Core(MainFlow)/Root(where app opens up)/ContentView.swift` — Root content view that composes the main flow and tabs.
+## Project Structure
 
----
+```text
+TikTokClone/
+├── TikTokClone/App
+├── TikTokClone/Core(MainFlow)
+│   ├── Comments
+│   ├── Feed
+│   ├── Notifications
+│   ├── Profile
+│   ├── Root(where app opens up)
+│   ├── Search
+│   └── TabBar
+├── TikTokClone/Model
+└── TikTokClone/Assets.xcassets
+```
 
-## Key Features
+## Notes
 
-- Video feed (Feed) with custom player components.
-- User profiles with a post grid and header components.
-- Search/Explore UI.
-- Notifications list.
-- Tab bar navigation.
+- This is a tutorial-based project, so several screens currently use static placeholder data.
+- The upload tab is not implemented yet.
+- Feed post metadata and social actions are present in the UI, but are not backed by a real backend.
+- Video content is loaded from public sample MP4 URLs.
 
-Mapped folders:
+## Main Files
 
-- `Core(MainFlow)/Feed/` — Feed views, view models, and service layers.
-- `Core(MainFlow)/Profile/` — Profile views and components.
-- `Core(MainFlow)/Search/` — Explore view and user search cell.
-- `Core(MainFlow)/Notifications/` — Notification views.
-- `Model/Post.swift` — Primary data model for posts.
+- `TikTokClone/TikTokClone/App/TikTokCloneApp.swift`: app entry point
+- `TikTokClone/TikTokClone/Core(MainFlow)/TabBar/MainTabView.swift`: root tab navigation
+- `TikTokClone/TikTokClone/Core(MainFlow)/Feed/View/FeedView.swift`: vertically paged feed
+- `TikTokClone/TikTokClone/Core(MainFlow)/Feed/View/FeedCell.swift`: full-screen video cell UI
+- `TikTokClone/TikTokClone/Core(MainFlow)/Comments/CustomVideoPlayer.swift`: SwiftUI wrapper for `AVPlayerViewController`
+- `TikTokClone/TikTokClone/Core(MainFlow)/Profile/CurrentUserProfileView.swift`: profile screen
 
----
+## Running the Project
 
-## Architecture & Project Structure
+1. Open the project in Xcode.
+2. Select an iOS Simulator or device.
+3. Build and run the `TikTokClone` scheme.
 
-This project uses SwiftUI and follows an MVVM-inspired structure. The high-level responsibilities:
+## Purpose
 
-- Views: SwiftUI views that present UI and bind to view models (`View` folders under each feature).
-- ViewModels: Provide data and user interaction logic (e.g., `FeedViewModel.swift`).
-- Services: Networking or data-loading code (folder: `Service`).
-- Models: Plain data structs representing domain objects (`Model/Post.swift`).
-- Components (reusableViews): Small, shareable UI components.
+This project is mainly useful as a SwiftUI learning exercise for:
 
-Notes:
-- The codebase avoids external dependencies by default; if you add packages, document them in this README.
-
----
-
-## Getting Started
-
-Requirements
-
-- macOS with Xcode 14 or later (Xcode 15 recommended for the latest Swift and SwiftUI features).
-- iOS 16.0+ (assumed). If you need a lower deployment target, open the project in Xcode and adjust the "iOS Deployment Target" in project settings.
-
-Run the app
-
-1. Open the project in Xcode:
-
-   - Prefer: `TikTokClone.xcworkspace` if present.
-   - Otherwise: `TikTokClone.xcodeproj`.
-
-2. Select a simulator (iPhone 14 or similar) or a physical device.
-3. Build and Run (⌘R).
-
----
-
-## File Map (important files)
-
-- `App/TikTokCloneApp.swift` — Application entry point.
-- `Core(MainFlow)/Root(where app opens up)/ContentView.swift` — Root composition and tab bar wiring.
-- `Core(MainFlow)/Feed/View/FeedView.swift` — The feed screen.
-- `Core(MainFlow)/Feed/ViewModel/FeedViewModel.swift` — Feed view model & sample data loading.
-- `Core(MainFlow)/Feed/View/FeedCell.swift` — The feed cell UI.
-- `Core(MainFlow)/Profile/Components/ProfileHeaderView.swift` — Profile header UI.
-- `Model/Post.swift` — Post model used across the app.
-
----
-
-## Assets
-
-Images and app icons live in `TikTokClone/Assets.xcassets/`.
-Notable assets:
-
-- `profilePic.imageset` — sample user avatar(s).
-- `secondProfilePic.imageset` — another sample avatar.
-
-Add or replace assets using the Assets catalog in Xcode.
-
----
-
-
-## Contributing
-
-Contributions are welcome. Suggested workflow:
-
-1. Fork the repo.
-2. Create a feature branch: `git checkout -b feat/my-feature`.
-3. Commit changes: `git commit -m "feat: add ..."`.
-4. Push and open a pull request.
-
-Guidelines:
-- Keep UI and logic modular.
-- Add tests for new features where possible.
-
----
-
-
-
-
+- tab-based app structure
+- view composition
+- basic AVKit integration
+- scroll-driven media playback
+- building reusable UI components
